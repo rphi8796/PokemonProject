@@ -6,6 +6,7 @@ public class Nidoran extends Pokemon implements Poison
 	public Nidoran(int number, String name)
 	{
 		super(number, name);
+		this.setCanEvolve(true);
 	}
 	
 	public void poisonSkin()

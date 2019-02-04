@@ -9,21 +9,23 @@ import pokemon.view.PokedexFrame;
 
 public class PokedexController
 {
-	private PokedexFrame appFrame;
 	private ArrayList<Pokemon> pokemonList;
-//	private PokedexFrame appFrame;
+	private PokedexFrame appFrame;
 	
 	public PokedexController()
 	{
 		pokemonList = new ArrayList<Pokemon>();
 		addPokemon();
-//		appFrame = new PokedexFrame(this);
+		appFrame = new PokedexFrame(this);
 	}
 	
 	private void addPokemon()
 	{
 		pokemonList.add(new Ditto(132, "Guy"));
-		pokemonList.add(new Nidoran(30, "Jeff"));
+		pokemonList.add(new Nidoran(32, "Jeff"));
+		pokemonList.add(new Nidorina(30, "Jeffette"));
+		pokemonList.add(new Pignite(499, "Pigo"));
+		pokemonList.add(new Pikachu(25, "Pikaka"));
 	}
 	
 	public boolean isInt(String maybeInt)

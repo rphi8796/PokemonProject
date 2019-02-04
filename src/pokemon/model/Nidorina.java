@@ -1,6 +1,6 @@
 package pokemon.model;
 
-public class Nidorina extends Nidoran
+public class Nidorina extends Nidoran implements Poison
 {
 	public Nidorina(int number, String name)
 	{
