@@ -6,4 +6,15 @@ public class Nidorina extends Nidoran
 	{
 		super(number, name);
 	}
+	
+	public void poisonSkin()
+	{
+		System.out.println("hmmm I do poison");
+	}
+	
+	public String poorFoodPreparation()
+	{
+		String disease = "Salmonella";
+		return disease;
+	}
 }
