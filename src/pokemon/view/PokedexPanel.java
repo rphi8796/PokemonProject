@@ -8,16 +8,20 @@ public class PokedexPanel extends JPanel
 {
 	private PokedexController appController;
 	private SpringLayout appLayout;
-	private JTextField text;
-	private JLabel label;
+	private JTextField Name;
+	private JLabel pokemonName;
+	private JTextField maleRatio;
+	private JTextField femaleRatio;
+	private JTextField number;
+	
 	
 	public PokedexPanel(PokedexController appController)
 	{
 		super();
 		
 		this.appController = appController;
-		text = new JTextField("text");
-		label = new JLabel("label");
+		Name = new JTextField(JOptionPane.showInputDialog("what do you want to name your pokemon?"));
+		pokemonName = new JLabel("Label");
 		appLayout = new SpringLayout();
 
 		
@@ -31,8 +35,8 @@ public class PokedexPanel extends JPanel
 		this.setLayout(appLayout);
 		this.setPreferredSize(new Dimension(800, 600));
 		this.setBackground(Color.LIGHT_GRAY);
-		this.add(text);
-		this.add(label);
+		this.add(Name);
+		this.add(number);
 	}
 	
 	private void setupLayout()
