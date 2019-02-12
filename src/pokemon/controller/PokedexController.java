@@ -12,12 +12,20 @@ public class PokedexController
 	private ArrayList<Pokemon> pokemonList;
 	private PokedexFrame appFrame;
 	
+	
 	public PokedexController()
 	{
 		pokemonList = new ArrayList<Pokemon>();
 		addPokemon();
 		appFrame = new PokedexFrame(this);
 	}
+	
+	
+	public void start()
+	{
+		addPokemon();
+	}
+	
 	
 	private void addPokemon()
 	{
