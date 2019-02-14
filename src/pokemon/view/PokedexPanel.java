@@ -45,18 +45,18 @@ public class PokedexPanel extends JPanel
 		
 		appLayout = new SpringLayout();
 		
-		this.pokemonIcon = new ImageIcon(getClass().getResource("/pokemon/view/images/pikachu.png"));
+		this.pokemonIcon = new ImageIcon(getClass().getResource("/pokemon/view/images/ditto.png"));
 		changeButton = new JButton("Click to change values");
 		
-		numberField = new JTextField("num");
+		numberField = new JTextField("132");
 		numberField.setEnabled(false);
 		nameField = new JTextField("name");
 		evolveField = new JTextField("false");
 		
-		attackField = new JTextField("att");
+		attackField = new JTextField("0");
 
-		enhancementField = new JTextField("enh");
-		healthField = new JTextField("health");
+		enhancementField = new JTextField("0.0");
+		healthField = new JTextField("0");
 		appLayout.putConstraint(SpringLayout.NORTH, changeButton, 40, SpringLayout.SOUTH, healthField);
 		
 		
@@ -80,8 +80,8 @@ public class PokedexPanel extends JPanel
 
 		
 		pokedexDropdown = new JComboBox<String>();
-		appLayout.putConstraint(SpringLayout.SOUTH, pokedexDropdown, -66, SpringLayout.SOUTH, this);
-		appLayout.putConstraint(SpringLayout.EAST, pokedexDropdown, -97, SpringLayout.WEST, imageLabel);
+		appLayout.putConstraint(SpringLayout.SOUTH, pokedexDropdown, 0, SpringLayout.SOUTH, imageLabel);
+		appLayout.putConstraint(SpringLayout.EAST, pokedexDropdown, -98, SpringLayout.WEST, imageLabel);
 		
 
 		
@@ -183,6 +183,10 @@ public class PokedexPanel extends JPanel
 			{
 				String name = pokedexDropdown.getSelectedItem().toString();
 				changeImageDisplay(name);
+				String[] nums = appController.buildPokedexNums();
+				String number = nums[pokedexDropdown.getSelectedIndex()];
+				numberField.setText(number);
+				
 			}
 		});
 			
@@ -192,24 +196,26 @@ public class PokedexPanel extends JPanel
 	{
 		DefaultComboBoxModel<String> temp = new DefaultComboBoxModel<String>(appController.buildPokedexText());
 		pokedexDropdown.setModel(temp);
+	
 	}
 	
 	private void sendDataToController()
 	{
+
 		int index = pokedexDropdown.getSelectedIndex();
 		
-		if(appController.isInt(attackField.getText()) && appController.isDouble(enhancementField.getText()) && appController .isInt(healthField.getText()))
+		if(appController.isInt(attackField.getText()) && appController.isDouble(enhancementField.getText()) && appController.isInt(healthField.getText()))
 		{
-			String [] data = new String[5];
-			
+			String [] data = appController.buildPokedexNums();
 			appController.updatePokemon(index, data);
 		}
+		
 	}
 	
-	private void  changeImageDisplay(String name)
+	private void changeImageDisplay(String name)
 	{
 		String path = "/pokemon/view/images/";
-		String defaultName = "pokemon";
+		String defaultName = "pikachu";
 		String extension = ".png";
 		try
 		{
@@ -221,6 +227,10 @@ public class PokedexPanel extends JPanel
 		}
 		imageLabel.setIcon(pokemonIcon);
 		repaint();
+		
+		
+		
+		
 		
 	}
 	

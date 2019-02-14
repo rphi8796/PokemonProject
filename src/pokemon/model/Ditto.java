@@ -6,7 +6,7 @@ public class Ditto extends Pokemon implements Normal
 	
 	public Ditto()
 	{
-		super(132, "diito");
+		super(132, "ditto");
 	}
 	
 	public Ditto(int number, String name)

@@ -60,6 +60,17 @@ public class PokedexController
 		return names;
 	}
 	
+	public String[] buildPokedexNums()
+	{
+		String [] numbers = new String [pokemonList.size()];
+		
+		for(int index = 0; index < pokemonList.size(); index++)
+		{
+			numbers[index] = "" + pokemonList.get(index).getNumber();
+		}
+		return numbers;
+	}
+	
 	public boolean isInt(String maybeInt)
 	{
 		boolean isValid = false;
