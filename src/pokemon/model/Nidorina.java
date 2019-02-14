@@ -2,6 +2,11 @@ package pokemon.model;
 
 public class Nidorina extends Nidoran implements Poison
 {
+	public Nidorina()
+	{
+		super(30, "nidorina");
+	}
+	
 	public Nidorina(int number, String name)
 	{
 		super(number, name);

@@ -29,11 +29,11 @@ public class PokedexController
 	
 	public void addPokemon()
 	{
-		pokemonList.add(new Ditto(132, "Guy"));
-		pokemonList.add(new Nidoran(32, "Jeff"));
-		pokemonList.add(new Nidorina(30, "Jeffette"));
-		pokemonList.add(new Pignite(499, "Pigo"));
-		pokemonList.add(new Pikachu(25, "Pikaka"));
+		pokemonList.add(new Ditto());
+		pokemonList.add(new Nidoran());
+		pokemonList.add(new Nidorina());
+		pokemonList.add(new Pignite());
+		pokemonList.add(new Pikachu());
 	}
 	
 	public void updatePokemon(int index, String [] data)

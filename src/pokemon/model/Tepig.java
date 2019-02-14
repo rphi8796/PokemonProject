@@ -2,6 +2,7 @@ package pokemon.model;
 
 public class Tepig extends Pokemon implements Fire
 {
+	
 	public Tepig(int number, String name)
 	{
 		super(number, name);

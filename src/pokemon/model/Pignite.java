@@ -2,6 +2,11 @@ package pokemon.model;
 
 public class Pignite extends Tepig implements Fighting, Fire
 {
+	public Pignite()
+	{
+		super(499, "pignite");
+	}
+	
 	public Pignite(int number, String name)
 	{
 		super(number, name);

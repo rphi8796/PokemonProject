@@ -4,6 +4,11 @@ public class Ditto extends Pokemon implements Normal
 {
 	private String copiedPokemon = "none";
 	
+	public Ditto()
+	{
+		super(132, "diito");
+	}
+	
 	public Ditto(int number, String name)
 	{
 		super(number, name);

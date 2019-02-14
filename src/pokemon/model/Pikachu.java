@@ -9,6 +9,11 @@ public class Pikachu extends Pokemon implements Electric
 			+ " for a status beyond one’s control,/n"
 			+ " or without employing any significant due process procedures.  ";
 	
+	public Pikachu()
+	{
+		super(25, "pikachu");
+	}
+	
 	public Pikachu(int number, String name)
 	{
 		super(number, name);
