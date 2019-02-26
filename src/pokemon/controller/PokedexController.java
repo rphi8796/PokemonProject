@@ -20,12 +20,10 @@ public class PokedexController
 		appFrame = new PokedexFrame(this);
 	}
 	
-	
 	public void start()
 	{
 		addPokemon();
 	}
-	
 	
 	public void addPokemon()
 	{
@@ -34,6 +32,7 @@ public class PokedexController
 		pokemonList.add(new Nidorina());
 		pokemonList.add(new Pignite());
 		pokemonList.add(new Pikachu());
+		pokemonList.add(new Aye());
 	}
 	
 	public void updatePokemon(int index, String [] data)
@@ -117,6 +116,4 @@ public class PokedexController
 		return pokemonList;
 	}
 	
-	
-
 }
