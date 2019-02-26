@@ -74,6 +74,12 @@ public abstract class Pokemon
 	{
 		return enhancementModifier;
 	}
+	
+	public String getEvolvability()
+	{
+		String bool = "" + this.canEvolve;
+		return bool;
+	}
 
 	/** * @return the number */
 	public int getNumber()

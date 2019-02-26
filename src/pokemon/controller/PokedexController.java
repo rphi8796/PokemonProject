@@ -59,6 +59,17 @@ public class PokedexController
 		return names;
 	}
 	
+	public String[] buildPokedexNames()
+	{
+		String [] numbers = new String [pokemonList.size()];
+		
+		for(int index = 0; index < pokemonList.size(); index++)
+		{
+			numbers[index] = "" + pokemonList.get(index).getName();
+		}
+		return numbers;
+	}
+	
 	public String[] buildPokedexNums()
 	{
 		String [] numbers = new String [pokemonList.size()];
@@ -66,6 +77,39 @@ public class PokedexController
 		for(int index = 0; index < pokemonList.size(); index++)
 		{
 			numbers[index] = "" + pokemonList.get(index).getNumber();
+		}
+		return numbers;
+	}
+	
+	public String[] buildPokedexAttacks()
+	{
+		String [] numbers = new String [pokemonList.size()];
+		
+		for(int index = 0; index < pokemonList.size(); index++)
+		{
+			numbers[index] = "" + pokemonList.get(index).getAttackPoints();
+		}
+		return numbers;
+	}
+	
+	public String[] buildPokedexHealth()
+	{
+		String [] numbers = new String [pokemonList.size()];
+		
+		for(int index = 0; index < pokemonList.size(); index++)
+		{
+			numbers[index] = "" + pokemonList.get(index).getHealthPoints();
+		}
+		return numbers;
+	}
+	
+	public String[] buildPokedexEvolve()
+	{
+		String [] numbers = new String [pokemonList.size()];
+		
+		for(int index = 0; index < pokemonList.size(); index++)
+		{
+			numbers[index] = "" + pokemonList.get(index).getEvolvability();
 		}
 		return numbers;
 	}

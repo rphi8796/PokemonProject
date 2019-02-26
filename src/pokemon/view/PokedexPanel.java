@@ -14,6 +14,7 @@ public class PokedexPanel extends JPanel
 	private SpringLayout appLayout;
 	
 	private JButton changeButton;
+	private JButton saveButton;
 	
 	private JTextField numberField;
 	private JTextField nameField;
@@ -47,6 +48,7 @@ public class PokedexPanel extends JPanel
 		
 		this.pokemonIcon = new ImageIcon(getClass().getResource("/pokemon/view/images/ditto.png"));
 		changeButton = new JButton("Click to change values");
+		saveButton = new JButton("Save");
 		
 		numberField = new JTextField("132");
 		numberField.setEnabled(false);
@@ -182,11 +184,32 @@ public class PokedexPanel extends JPanel
 			public void actionPerformed(ActionEvent selection)
 			{
 				String name = pokedexDropdown.getSelectedItem().toString();
-				changeImageDisplay(name);
 				String[] nums = appController.buildPokedexNums();
+				String[] attacks = appController.buildPokedexAttacks();
+				String[] names = appController.buildPokedexNames();
+				String[] health = appController.buildPokedexHealth();
+				String[] evolve = appController.buildPokedexEvolve();
 				String number = nums[pokedexDropdown.getSelectedIndex()];
-				numberField.setText(number);
+				String attack = attacks[pokedexDropdown.getSelectedIndex()];
+				String nicName = names[pokedexDropdown.getSelectedIndex()];
+				String healthPoints = health[pokedexDropdown.getSelectedIndex()];
+				String canEvolve = evolve[pokedexDropdown.getSelectedIndex()];
 				
+				changeImageDisplay(name);
+				nameField.setText(nicName);
+				numberField.setText(number);
+				attackField.setText(attack);
+				healthField.setText(healthPoints);
+				evolveField.setText(canEvolve);
+			}
+		});
+		
+		saveButton.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent selection)
+			{
+				String name = pokedexDropdown.getSelectedItem().toString();
+				changeImageDisplay(name);
 			}
 		});
 			
@@ -201,12 +224,16 @@ public class PokedexPanel extends JPanel
 	
 	private void sendDataToController()
 	{
-
 		int index = pokedexDropdown.getSelectedIndex();
 		
 		if(appController.isInt(attackField.getText()) && appController.isDouble(enhancementField.getText()) && appController.isInt(healthField.getText()))
 		{
-			String [] data = appController.buildPokedexNums();
+			String [] data = new String[5];
+			data[0] = attackField.getText();
+			data[1] = enhancementField.getText();
+			data[2] = healthField.getText();
+			data[3] = nameField.getText();
+			data[4] = evolveField.getText();
 			appController.updatePokemon(index, data);
 		}
 		
@@ -227,11 +254,6 @@ public class PokedexPanel extends JPanel
 		}
 		imageLabel.setIcon(pokemonIcon);
 		repaint();
-		
-		
-		
-		
-		
 	}
 	
 	
