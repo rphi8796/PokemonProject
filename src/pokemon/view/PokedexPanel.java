@@ -7,9 +7,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.io.*;
 
 public class PokedexPanel extends JPanel
 {
+	private String saveFile = "backup.pokemon";
 	private PokedexController appController;
 	private SpringLayout appLayout;
 	
@@ -46,13 +48,13 @@ public class PokedexPanel extends JPanel
 		
 		appLayout = new SpringLayout();
 		
-		this.pokemonIcon = new ImageIcon(getClass().getResource("/pokemon/view/images/ditto.png"));
+		this.pokemonIcon = new ImageIcon(getClass().getResource("/pokemon/view/images/pokeball.png"));
 		changeButton = new JButton("Click to change values");
 		saveButton = new JButton("Save");
 		
-		numberField = new JTextField("132");
+		numberField = new JTextField("0");
 		numberField.setEnabled(false);
-		nameField = new JTextField("name");
+		nameField = new JTextField("Pokeball");
 		evolveField = new JTextField("false");
 		
 		attackField = new JTextField("0");
@@ -101,6 +103,7 @@ public class PokedexPanel extends JPanel
 		this.setBackground(new Color(0, 102, 204));
 		
 		this.add(changeButton);
+		this.add(saveButton);
 		
 		this.add(numberField);
 		this.add(nameField);
@@ -189,11 +192,13 @@ public class PokedexPanel extends JPanel
 				String[] names = appController.buildPokedexNames();
 				String[] health = appController.buildPokedexHealth();
 				String[] evolve = appController.buildPokedexEvolve();
+				String[] enhance = appController.buildPokedexEnhance();
 				String number = nums[pokedexDropdown.getSelectedIndex()];
 				String attack = attacks[pokedexDropdown.getSelectedIndex()];
 				String nicName = names[pokedexDropdown.getSelectedIndex()];
 				String healthPoints = health[pokedexDropdown.getSelectedIndex()];
 				String canEvolve = evolve[pokedexDropdown.getSelectedIndex()];
+				String enhancement = enhance[pokedexDropdown.getSelectedIndex()];
 				
 				changeImageDisplay(name);
 				nameField.setText(nicName);
@@ -201,6 +206,7 @@ public class PokedexPanel extends JPanel
 				attackField.setText(attack);
 				healthField.setText(healthPoints);
 				evolveField.setText(canEvolve);
+				enhancementField.setText(enhancement);
 			}
 		});
 		
@@ -208,8 +214,7 @@ public class PokedexPanel extends JPanel
 		{
 			public void actionPerformed(ActionEvent selection)
 			{
-				String name = pokedexDropdown.getSelectedItem().toString();
-				changeImageDisplay(name);
+				appController.savePokedex();
 			}
 		});
 			
@@ -219,7 +224,6 @@ public class PokedexPanel extends JPanel
 	{
 		DefaultComboBoxModel<String> temp = new DefaultComboBoxModel<String>(appController.buildPokedexText());
 		pokedexDropdown.setModel(temp);
-	
 	}
 	
 	private void sendDataToController()
@@ -236,7 +240,6 @@ public class PokedexPanel extends JPanel
 			data[4] = evolveField.getText();
 			appController.updatePokemon(index, data);
 		}
-		
 	}
 	
 	private void changeImageDisplay(String name)
